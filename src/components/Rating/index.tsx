@@ -1,7 +1,7 @@
 import { useFormContext } from "react-hook-form";
 import { FormData } from "../../types/form.type";
 import { useStep } from "../../hook/step";
-import { Star, StarRating } from "../../styles/components/Rating.styles";
+import { StarRating } from "../../styles/components/Rating.styles";
 
 const ratingStep = 4;
 
@@ -14,15 +14,16 @@ export function Rating() {
     return (
       <StarRating>
         {[1, 2, 3, 4, 5].map((star) => (
-          <Star
+          <span
             key={star}
+            // selected={star <= (rating || 0)}
             onClick={() => {
               setValue("rating", star);
             }}
             style={{ cursor: "pointer", fontSize: "24px" }}
           >
             {star <= (rating || 0) ? "★" : "☆"}
-          </Star>
+          </span>
         ))}
       </StarRating>
     );
